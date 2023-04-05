@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38622068-fbe1-4c30-8ba6-009786482d2f" name="Changes" comment="through 1.11" />
+    <list default="true" id="38622068-fbe1-4c30-8ba6-009786482d2f" name="Changes" comment="Renamed to unicafe">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +40,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="npm.cd start">
+  <component name="RunManager" selected="npm.anecdotes start">
+    <configuration name="anecdotes start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/anecdotes/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="cd start" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/part1cd/package.json" />
       <command value="start" />
@@ -55,6 +64,7 @@
     </configuration>
     <list>
       <item itemvalue="npm.cd start" />
+      <item itemvalue="npm.anecdotes start" />
       <item itemvalue="npm.start" />
     </list>
   </component>
@@ -68,6 +78,7 @@
       <updated>1680459367085</updated>
       <workItem from="1680459368129" duration="6857000" />
       <workItem from="1680631783497" duration="9034000" />
+      <workItem from="1680654484111" duration="795000" />
     </task>
     <task id="LOCAL-00001" summary="Basic React App">
       <created>1680459875517</created>
@@ -111,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680654283234</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Renamed to unicafe">
+      <created>1680654515018</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680654515018</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,6 +142,7 @@
     <MESSAGE value="1.6" />
     <MESSAGE value="1.7" />
     <MESSAGE value="through 1.11" />
-    <option name="LAST_COMMIT_MESSAGE" value="through 1.11" />
+    <MESSAGE value="Renamed to unicafe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed to unicafe" />
   </component>
 </project>
