@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38622068-fbe1-4c30-8ba6-009786482d2f" name="Changes" comment="through 1.11">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part1cd/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/part1cd/src/App.js" afterDir="false" />
-    </list>
+    <list default="true" id="38622068-fbe1-4c30-8ba6-009786482d2f" name="Changes" comment="through 1.11" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,23 +21,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Jacks/Programming/FullStackOpen/part1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "C:/Users/Jacks/.nvm/versions/node/v19.8.1/bin/node",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jacks/Programming/FullStackOpen/part1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/Jacks/.nvm/versions/node/v19.8.1/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.maddyhome.idea.vim.ui.VimEmulationConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.cd start">
     <configuration name="cd start" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/part1cd/package.json" />
@@ -70,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680459367085</updated>
       <workItem from="1680459368129" duration="6857000" />
-      <workItem from="1680631783497" duration="8845000" />
+      <workItem from="1680631783497" duration="9034000" />
     </task>
     <task id="LOCAL-00001" summary="Basic React App">
       <created>1680459875517</created>
@@ -107,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680653165353</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="through 1.11">
+      <created>1680654283234</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680654283234</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
