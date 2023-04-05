@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38622068-fbe1-4c30-8ba6-009786482d2f" name="Changes" comment="1.6">
+    <list default="true" id="38622068-fbe1-4c30-8ba6-009786482d2f" name="Changes" comment="through 1.11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part1cd/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/part1cd/src/App.js" afterDir="false" />
     </list>
@@ -70,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680459367085</updated>
       <workItem from="1680459368129" duration="6857000" />
-      <workItem from="1680631783497" duration="7725000" />
+      <workItem from="1680631783497" duration="8845000" />
     </task>
     <task id="LOCAL-00001" summary="Basic React App">
       <created>1680459875517</created>
@@ -100,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680652305129</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="1.7">
+      <created>1680653165353</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680653165353</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +118,8 @@
     <MESSAGE value="Part a&#10;added basic site structure" />
     <MESSAGE value="Part b&#10;Added functions and object literals" />
     <MESSAGE value="1.6" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.6" />
+    <MESSAGE value="1.7" />
+    <MESSAGE value="through 1.11" />
+    <option name="LAST_COMMIT_MESSAGE" value="through 1.11" />
   </component>
 </project>

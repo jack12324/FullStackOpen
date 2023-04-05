@@ -1,20 +1,24 @@
 import {useState} from 'react'
 
 const Button = ({ handleClick, text }) => (  <button onClick={handleClick}>    {text}  </button>)
-const Statistic = ({name, count}) => (<p>{name} {count}</p>)
-const Percent = ({name, count}) => (<p>{name} {count} %</p>)
-
+const StatisticLine = ({name, count}) => (<tr><td>{name}</td><td>{count}</td></tr>)
 const Statistics = ({good, neutral, bad}) => {
     const total = good+bad+neutral
+    if(total === 0)
+        return <p>
+            No feedback given
+        </p>
     return(
-        <>
-            <Statistic name={'good'} count={good}/>
-            <Statistic name={'neutral'} count={neutral}/>
-            <Statistic name={'bad'} count={bad}/>
-            <Statistic name={'all'} count={total}/>
-            <Statistic name={'average'} count={(good-bad)/total}/>
-            <Percent name={'positive'} count={(good/total)*100}/>
-        </>
+        <table>
+            <tbody>
+                <StatisticLine name={'good'} count={good}/>
+                <StatisticLine name={'neutral'} count={neutral}/>
+                <StatisticLine name={'bad'} count={bad}/>
+                <StatisticLine name={'all'} count={total}/>
+                <StatisticLine name={'average'} count={(good-bad)/total}/>
+                <StatisticLine name={'positive'} count={((good/total)*100).toString() + ' %'}/>
+            </tbody>
+        </table>
     )
 }
 
