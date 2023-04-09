@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {Persons} from "./components/Persons";
 import {PersonForm} from "./components/PersonForm";
 import {Filter} from "./components/Filter";
-import axios from "axios";
+import phonebookService from "./services/phonebook"
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -22,18 +22,39 @@ const App = () => {
   const handleSubmit= (event) => {
       event.preventDefault()
       if (persons.some(person => person.name === newName)){
-          alert(`${newName} is already added to phonebook`)
-          return
+          if(window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)){
+              const person = persons.find(person => person.name === newName)
+              const updatedPerson = {...person, number: newNumber}
+              phonebookService.update(updatedPerson.id, updatedPerson).then(
+                responsePerson => {
+                    setPersons(persons.map(person => person.id === responsePerson.id ? responsePerson : person))
+                    setNewName('')
+                    setNewNumber('')
+                }
+              )
+          }
+      } else {
+          phonebookService.create({name: newName, number: newNumber}).then(
+              responsePerson => setPersons(persons.concat(responsePerson))
+          )
+          setNewName('')
+          setNewNumber('')
       }
-      setPersons(persons.concat({name: newName, number: newNumber}))
-      setNewName('')
-      setNewNumber('')
+  }
+
+  const handleDelete = (person) => {
+      if (window.confirm(`Delete ${person.name}`)){
+          phonebookService.deletePerson(person.id).then( () =>
+              setPersons(persons.filter(p => p.id !== person.id))
+          )
+      }
   }
 
   const hook = () =>{
-      axios.get('http://localhost:3001/persons').then(
-          response => {
-              setPersons(response.data)
+      phonebookService.getAll()
+      .then(
+          responsePersons => {
+              setPersons(responsePersons)
           }
       )
   }
@@ -60,7 +81,7 @@ const App = () => {
         </section>
         <section>
             <h2>Numbers</h2>
-            <Persons persons={peopleToShow}/>
+            <Persons persons={peopleToShow} handleDelete={handleDelete}/>
         </section>
     </div>
   )
