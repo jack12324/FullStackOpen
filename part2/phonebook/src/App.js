@@ -3,12 +3,16 @@ import {Persons} from "./components/Persons";
 import {PersonForm} from "./components/PersonForm";
 import {Filter} from "./components/Filter";
 import phonebookService from "./services/phonebook"
+import Notification from "./components/Notification";
+import './index.css'
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setfilter] = useState('')
+  const [errorMessage, setErrorMessage] = useState(null)
+  const [successMessage, setSuccessMessage] = useState(null)
 
   const handleNewName = (event) => {
       setNewName(event.target.value)
@@ -19,6 +23,14 @@ const App = () => {
   const updateFilter= (event) => {
       setfilter(event.target.value)
   }
+  const displayNotificationFor = (message, seconds, setNotification) => {
+      setNotification(message)
+      setTimeout( () => {
+              setNotification(null)
+          }, 1000 * seconds
+      )
+  }
+
   const handleSubmit= (event) => {
       event.preventDefault()
       if (persons.some(person => person.name === newName)){
@@ -28,17 +40,26 @@ const App = () => {
               phonebookService.update(updatedPerson.id, updatedPerson).then(
                 responsePerson => {
                     setPersons(persons.map(person => person.id === responsePerson.id ? responsePerson : person))
+                    displayNotificationFor(`Updated Number for ${responsePerson.name}`, 3, setSuccessMessage)
                     setNewName('')
                     setNewNumber('')
                 }
+              ).catch(
+                  () => {
+                      displayNotificationFor(`Update unsuccessful: ${person.name} has already been removed from server`, 3, setErrorMessage)
+                      setPersons(persons.filter(p => p.id !== person.id))
+                  }
               )
           }
       } else {
           phonebookService.create({name: newName, number: newNumber}).then(
-              responsePerson => setPersons(persons.concat(responsePerson))
+              responsePerson => {
+                  setPersons(persons.concat(responsePerson))
+                  displayNotificationFor(`Added ${responsePerson.name}`, 3, setSuccessMessage)
+                  setNewName('')
+                  setNewNumber('')
+              }
           )
-          setNewName('')
-          setNewNumber('')
       }
   }
 
@@ -69,6 +90,8 @@ const App = () => {
     <div>
         <section>
             <h2>Phonebook</h2>
+            <Notification className={'error'} message={errorMessage}/>
+            <Notification className={'success'} message={successMessage}/>
             <Filter text={'filter shown with'} updateHandler={updateFilter} value={filter}/>
         </section>
         <section>
