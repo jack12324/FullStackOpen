@@ -1,4 +1,4 @@
-const CountryList = ({countries}) => {
+const CountryList = ({countries, selectHandler}) => {
     if(countries.length > 10) {
         return (
             <section>
@@ -19,7 +19,7 @@ const CountryList = ({countries}) => {
     } else {
         return (
             <section>
-                {countries.map(country => <p key={country.name.common}>{country.name.common}</p>)}
+                {countries.map(country => <p key={country.name.common}>{country.name.common} <button onClick={() => selectHandler(country)}>show</button></p>)}
             </section>
         )
 
