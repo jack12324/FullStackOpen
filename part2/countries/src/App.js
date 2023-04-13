@@ -43,7 +43,9 @@ function App() {
         if(!countryToDisplay){
             setWeather(null)
         } else {
-            WeatherService.getCurrent(countryToDisplay.latlng[0], countryToDisplay.latlng[1])
+            WeatherService.getCurrent(countryToDisplay.latlng[0], countryToDisplay.latlng[1]).then(weatherData =>
+                setWeather(weatherData)
+            )
         }
     }
 
