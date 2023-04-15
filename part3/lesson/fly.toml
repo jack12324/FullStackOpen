@@ -1,0 +1,18 @@
+# fly.toml file generated for fullstack-open-notes on 2023-04-15T14:34:30-04:00
+
+app = "fullstack-open-notes"
+primary_region = "iad"
+
+[env]
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+
+[checks]
+  [checks.alive]
+    type = "tcp"
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "5s"

@@ -1,0 +1,30 @@
+### DELETE note at index 2
+DELETE http://localhost:3001/api/notes/2
+
+### GET all notes
+GET http://localhost:3001/api/notes
+
+### POST new note
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content": "Webstorm is neat",
+  "important": false
+}
+
+### POST with no content
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "important": true
+}
+
+### POST with no important
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content": "rest is neater"
+}
