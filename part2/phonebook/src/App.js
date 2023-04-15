@@ -92,10 +92,10 @@ const App = () => {
             <h2>Phonebook</h2>
             <Notification className={'error'} message={errorMessage}/>
             <Notification className={'success'} message={successMessage}/>
-            <Filter text={'filter shown with'} updateHandler={updateFilter} value={filter}/>
+            <Filter text={'search'} updateHandler={updateFilter} value={filter}/>
         </section>
         <section>
-            <h2>Add a New</h2>
+            <h2>Add a New Person</h2>
             <PersonForm
                 submitHandler={handleSubmit}
                 nameHandler={handleNewName} nameVal={newName}
