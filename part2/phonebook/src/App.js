@@ -40,26 +40,37 @@ const App = () => {
               phonebookService.update(updatedPerson.id, updatedPerson).then(
                 responsePerson => {
                     setPersons(persons.map(person => person.id === responsePerson.id ? responsePerson : person))
-                    displayNotificationFor(`Updated Number for ${responsePerson.name}`, 3, setSuccessMessage)
+                    displayNotificationFor(`Updated Number for ${responsePerson.name}`, 5, setSuccessMessage)
                     setNewName('')
                     setNewNumber('')
                 }
               ).catch(
-                  () => {
-                      displayNotificationFor(`Update unsuccessful: ${person.name} has already been removed from server`, 3, setErrorMessage)
-                      setPersons(persons.filter(p => p.id !== person.id))
+                  error => {
+                      if(error.response) {
+                          console.log(error)
+                          displayNotificationFor(error.response.data.error, 5, setErrorMessage)
+                      } else {
+                          displayNotificationFor(`Update unsuccessful: ${person.name} has already been removed from server`, 5, setErrorMessage)
+                          setPersons(persons.filter(p => p.id !== person.id))
+                      }
                   }
               )
           }
       } else {
-          phonebookService.create({name: newName, number: newNumber}).then(
-              responsePerson => {
-                  setPersons(persons.concat(responsePerson))
-                  displayNotificationFor(`Added ${responsePerson.name}`, 3, setSuccessMessage)
-                  setNewName('')
-                  setNewNumber('')
-              }
-          )
+          phonebookService.create({name: newName, number: newNumber})
+              .then(
+                responsePerson => {
+                    setPersons(persons.concat(responsePerson))
+                    displayNotificationFor(`Added ${responsePerson.name}`, 3, setSuccessMessage)
+                    setNewName('')
+                    setNewNumber('')
+                })
+              .catch(
+                  error => {
+                      console.log(error)
+                      displayNotificationFor(error.response.data.error, 5, setErrorMessage)
+                  }
+              )
       }
   }
 
