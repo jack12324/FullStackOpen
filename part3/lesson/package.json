@@ -10,7 +10,8 @@
     "build:ui": "rm -rf build && cd ../../part2/lesson/ && npm run build && cp -r build ../../part3/lesson/",
     "deploy": "fly deploy",
     "deploy:full": "npm run build:ui && npm run deploy",
-    "logs:prod": "fly logs"
+    "logs:prod": "fly logs",
+    "lint": "eslint ."
   },
   "author": "Jack Porter",
   "license": "ISC",
@@ -21,6 +22,11 @@
     "mongoose": "^7.0.4"
   },
   "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
     "nodemon": "^2.0.22"
   }
 }
