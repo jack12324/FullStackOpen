@@ -1,9 +1,12 @@
 import {useEffect, useState} from 'react'
 import Note from './components/Note'
 import noteService from './services/notes'
+import loginService from './services/login'
 import './index.css'
 import Notification from './components/Notification'
 import Footer from "./components/Footer";
+import LoginForm from "./components/LoginForm";
+import NoteForm from "./components/NoteForm";
 
 
 const App = () => {
@@ -11,6 +14,26 @@ const App = () => {
     const [newNote , setNewNote] = useState('a new note...')
     const [showAll, setShowAll] = useState(true)
     const [errorMessage, setErrorMessage] = useState(null)
+    const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [user, setUser] = useState(null)
+
+  const LSUSERKEY = 'loggedNoteappUser'
+
+  const loadNotesHook = () => {
+    noteService.getAll()
+      .then(returnedNotes=> {
+        setNotes(returnedNotes)
+      })
+  }
+  const loadUserHook = () => {
+    const loggedUserJSON = window.localStorage.getItem(LSUSERKEY)
+    if(loggedUserJSON){
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      noteService.setToken(user.token)
+    }
+  }
 
     const  addNote = (event) => {
         event.preventDefault()
@@ -26,16 +49,27 @@ const App = () => {
 
     }
 
-    const handleNoteChange = (event) => {
-        console.log(event.target.value)
-        setNewNote(event.target.value)
+    const handleLogin = async (event) => {
+      event.preventDefault()
+      try {
+        const user = await loginService.login({username, password})
+        window.localStorage.setItem(
+          LSUSERKEY, JSON.stringify(user)
+        )
+        noteService.setToken(user.token)
+        setUser(user)
+        setPassword('')
+        setUsername('')
+      } catch (exception) {
+        showErrorFor(`Wrong Credentials`, 5)
+      }
     }
 
-    const hook = () => {
-        noteService.getAll()
-            .then(returnedNotes=> {
-                setNotes(returnedNotes)
-            })
+    const showErrorFor = (message, timeInSeconds) => {
+      setErrorMessage(message)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 1000 * timeInSeconds)
     }
 
     const toggleImportanceOf = (id) => {
@@ -47,36 +81,39 @@ const App = () => {
                 setNotes(notes.map(note => note.id === id ? returnedNote: note))
             })
             .catch(() => {
-                setErrorMessage(
-                    `the note '${note.content}' was already deleted from the server`
-                )
-                setTimeout(() => {
-                    setErrorMessage(null)
-                }, 5000)
-                setNotes(notes.filter(note => note.id !== id))
+              showErrorFor(`the note '${note.content}' was already deleted from the server`, 5)
+              setNotes(notes.filter(note => note.id !== id))
             })
     }
+    const logOut = () => {
+      window.localStorage.removeItem(LSUSERKEY)
+      setUser(null)
+      noteService.setToken(null)
+    }
 
-    useEffect(hook, [])
+    useEffect(loadNotesHook, [])
+    useEffect(loadUserHook, [])
 
     console.log('render', notes.length, 'notes')
     const notesToShow = showAll ? notes : notes.filter(note=>note.important)
 
     return (
         <div>
-            <h1>Notes</h1>
-            <Notification message={errorMessage} />
-            <label>Show Only Important<input type={'checkbox'} checked={!showAll} onChange={()=>setShowAll(!showAll)}/></label>
-            <ul>
-                {notesToShow.map(note =>
-                    <Note key={note.id} note={note} toggleImportance={() => toggleImportanceOf(note.id)}/>
-                )}
-            </ul>
-            <form onSubmit={addNote}>
-                <input onChange={handleNoteChange} value={newNote}/>
-                <button type={"submit"}>save</button>
-            </form>
-            <Footer/>
+          <h1>Notes</h1>
+          <Notification message={errorMessage} />
+          {user && <p>{user.name} logged in <button onClick={logOut}>log out</button></p>}
+          {
+            user
+            ? <NoteForm note={newNote} setNote={setNewNote} addNoteHandler={addNote}/>
+            : <LoginForm password={password} username={username} setUsername={setUsername} setPassword={setPassword} loginHandler={handleLogin}/>
+          }
+          <label>Show Only Important<input type={'checkbox'} checked={!showAll} onChange={()=>setShowAll(!showAll)}/></label>
+          <ul>
+            {notesToShow.map(note =>
+              <Note key={note.id} note={note} toggleImportance={() => toggleImportanceOf(note.id)}/>
+            )}
+          </ul>
+          <Footer/>
         </div>
     )
 }
