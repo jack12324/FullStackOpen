@@ -1,9 +1,26 @@
-const LoginForm = ({addNoteHandler, note, setNote}) => {
+import { useState } from 'react'
+
+const LoginForm = ({ createNote }) => {
+
+  const [newNote, setNewNote] = useState('')
+
+  const  addNote = (event) => {
+    event.preventDefault()
+    createNote({
+      content: newNote,
+      important: true,
+    })
+    setNewNote('')
+  }
+
   return (
-    <form onSubmit={addNoteHandler}>
-      <input onChange={({target}) => setNote(target.value)} value={note}/>
-      <button type={"submit"}>save</button>
-    </form>
+    <section>
+      <h2>Create a new Note</h2>
+      <form onSubmit={addNote}>
+        <input onChange={({ target }) => setNewNote(target.value)} value={newNote}/>
+        <button type={'submit'}>save</button>
+      </form>
+    </section>
   )
 }
 
