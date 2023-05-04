@@ -17,7 +17,11 @@ const LoginForm = ({ createNote }) => {
     <section>
       <h2>Create a new Note</h2>
       <form onSubmit={addNote}>
-        <input onChange={({ target }) => setNewNote(target.value)} value={newNote}/>
+        <input
+          onChange={({ target }) => setNewNote(target.value)}
+          value={newNote}
+          placeholder={'write note content here'}
+        />
         <button type={'submit'}>save</button>
       </form>
     </section>
