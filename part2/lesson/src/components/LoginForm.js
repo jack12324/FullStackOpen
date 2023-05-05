@@ -19,17 +19,17 @@ const LoginForm = ({ loginUser }) => {
 
   return (
     <form onSubmit={login}>
-      <label>
+      <label htmlFor={'username'}>
         Username
-        <input type='text' value={username} name='Username' onChange={({ target }) => setUsername(target.value)}/>
+        <input id={'username'} type='text' value={username} name='Username' onChange={({ target }) => setUsername(target.value)}/>
       </label>
       <br/>
-      <label>
+      <label htmlFor={'password'}>
         Password
-        <input type='text' value={password} name='Password' onChange={({ target }) => setPassword(target.value)}/>
+        <input id='password' type='text' value={password} name='Password' onChange={({ target }) => setPassword(target.value)}/>
       </label>
       <br/>
-      <button type='submit'>login</button>
+      <button id='login-button' type='submit'>login</button>
     </form>
   )
 }

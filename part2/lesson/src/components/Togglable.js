@@ -8,6 +8,7 @@ const Togglable = forwardRef((props, refs) => {
   const showWhenVisible = { display: visible ? '' : 'none' }
 
   const toggleVisibility = () => {
+    console.log(props.buttonLabel, visible, '->', !visible)
     setVisible(!visible)
   }
 

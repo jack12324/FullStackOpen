@@ -94,10 +94,10 @@ const App = () => {
       {user && <p>{user.name} logged in <button onClick={logOut}>log out</button></p>}
       {
         user
-          ? <Togglable buttonLabel={'new note'} ref={noteFormRef}>
+          ? <Togglable key='create-note-toggle' buttonLabel={'new note'} ref={noteFormRef}>
             <NoteForm createNote={addNote}/>
           </Togglable>
-          :  <Togglable buttonLabel='login'>
+          :  <Togglable key='login-toggle' buttonLabel='login'>
             <LoginForm loginUser={loginUser}/>
           </Togglable>
       }
