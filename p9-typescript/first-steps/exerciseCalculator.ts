@@ -7,24 +7,6 @@ interface ExerciseStats {
     rating: 1 | 2 | 3;
     ratingDescription: string;
 }
-interface Arguments{
-    dailyExerciseHours: number[];
-    targetDailyExerciseHours: number;
-}
-const parseArgs = (args: string[]): Arguments => {
-    if (args.length < 4) throw new Error('Not enough arguments');
-    const dailyExerciseHours = args.slice(3).map(s => Number(s));
-    const noNaNs = dailyExerciseHours.reduce((all, current) => all && !isNaN(current), true);
-
-    if (!isNaN(Number(args[2])) && noNaNs) {
-        return {
-            targetDailyExerciseHours: Number(args[2]),
-            dailyExerciseHours
-        };
-    } else {
-        throw new Error('Provided values were not numbers!');
-    }
-};
 const calculateExercise = (dailyExerciseHours: number[], targetDailyExerciseHours: number): ExerciseStats => {
     const averageDailyHours = dailyExerciseHours.reduce((sum, current) => sum + current, 0)/dailyExerciseHours.length;
     const rating = averageDailyHours >= targetDailyExerciseHours ? 3 : averageDailyHours > targetDailyExerciseHours * .75 ? 2 : 1;
@@ -40,16 +22,5 @@ const calculateExercise = (dailyExerciseHours: number[], targetDailyExerciseHour
         ratingDescription
     };
 };
-try {
-    const { dailyExerciseHours, targetDailyExerciseHours} = parseArgs(process.argv);
-    console.log(calculateExercise(dailyExerciseHours, targetDailyExerciseHours));
-} catch (error: unknown) {
-    let errorMessage = 'Something bad happened.';
-    if (error instanceof Error) {
-        errorMessage += ' Error: ' + error.message;
-    }
-    console.log(errorMessage);
-}
-
 
 export default calculateExercise;

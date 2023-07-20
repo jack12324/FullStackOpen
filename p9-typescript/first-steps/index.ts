@@ -4,6 +4,8 @@ import {calculator, Operation} from "./calculator";
 import calculateExercise from "./exerciseCalculator";
 const app = express();
 
+app.use(express.json());
+
 app.get('/ping', (_req, res) => {
     res.send('pong');
 });
@@ -13,7 +15,6 @@ app.get('/hello', (_req, res) => {
 });
 
 app.get('/bmi', (req, res) => {
-    console.log(2);
     const height = Number(req.query.height);
     const weight = Number(req.query.weight);
 
@@ -29,7 +30,6 @@ app.get('/bmi', (req, res) => {
 });
 
 app.post('/calculate', (req, res) => {
-    console.log(2);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const {value1, value2, op} = req.body;
 
@@ -43,7 +43,6 @@ app.post('/calculate', (req, res) => {
 });
 
 app.post('/exercises', (req, res) => {
-    console.log(2);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const {target, dailyExercises} = req.body;
 

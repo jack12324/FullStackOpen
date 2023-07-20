@@ -21,32 +21,3 @@ export const calculateBmi = (heightCM: number, weightKG: number): string => {
         throw new Error(`Unknown input: ${bmi}`);
     }
 };
-
-interface Arguments{
-    heightCM: number;
-    weightKG: number;
-}
-export const parseArgs = (args: string[]): Arguments => {
-    if (args.length < 2) throw new Error('Not enough arguments');
-    if (args.length > 2) throw new Error('Too many arguments');
-
-    if (!isNaN(Number(args[0])) && !isNaN(Number(args[1]))) {
-        return{
-            heightCM: Number(args[0]),
-            weightKG: Number(args[1])
-        };
-    } else {
-        throw new Error('Provided values were not numbers!');
-    }
-};
-
-try {
-    const {heightCM, weightKG} = parseArgs(process.argv);
-    console.log(calculateBmi(heightCM, weightKG));
-} catch (error: unknown) {
-    let errorMessage = 'Something bad happened.';
-    if (error instanceof Error) {
-        errorMessage += ' Error: ' + error.message;
-    }
-    console.log(errorMessage);
-}
