@@ -1,0 +1,30 @@
+### DELETE note at index 2
+DELETE http://localhost:3001/api/blogs/2
+
+### GET all notes
+GET http://localhost:3001/api/blogs
+
+### POST new note
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "content": "Webstorm is neat",
+  "important": false
+}
+
+### POST with bad data
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "content": "rest is neater"
+}
+
+### PUT new likes
+PUT http://localhost:3001/api/blogs/1
+Content-Type: application/json
+
+{
+  "likes": 5
+}

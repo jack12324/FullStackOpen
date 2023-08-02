@@ -1,0 +1,60 @@
+### DELETE note at index 2
+DELETE http://localhost:3002/api/notes/2
+
+### GET all notes
+GET http://localhost:3002/api/notes
+
+### GET all users
+GET http://localhost:3002/api/users
+
+### POST new note
+POST http://localhost:3002/api/notes
+Content-Type: application/json
+
+{
+  "content": "Webstorm is neat",
+  "important": false
+}
+
+### POST with no content
+POST http://localhost:3002/api/notes
+Content-Type: application/json
+
+{
+  "important": true
+}
+
+### POST with no important
+POST http://localhost:3002/api/notes
+Content-Type: application/json
+
+{
+  "content": "rest is neater"
+}
+
+### POST a user
+POST http://localhost:3002/api/users
+Content-Type: application/json
+
+{
+  "username": "mluukkai",
+  "name": "matti Luukkainen"
+}
+
+### Login
+POST http://localhost:3002/api/login
+Content-Type: application/json
+
+{
+  "username": "mluukkai",
+  "password": "woah"
+}
+
+### Login wrong password
+POST http://localhost:3002/api/login
+Content-Type: application/json
+
+{
+  "username": "mluukkai",
+  "password": "wah"
+}

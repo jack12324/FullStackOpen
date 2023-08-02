@@ -17,6 +17,8 @@
       <excludeFolder url="file://$MODULE_DIR$/p2/phonebook/build" />
       <excludeFolder url="file://$MODULE_DIR$/p9-typescript/flight-diaries/build" />
       <excludeFolder url="file://$MODULE_DIR$/p9-typescript/patientor-backend/build" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/p3/lesson/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
