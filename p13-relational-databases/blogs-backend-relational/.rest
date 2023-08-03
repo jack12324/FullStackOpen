@@ -1,16 +1,19 @@
 ### DELETE note at index 2
-DELETE http://localhost:3001/api/blogs/2
+DELETE http://localhost:3001/api/blogs/7
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpMyIsImlkIjozLCJpYXQiOjE2OTEwNzE1ODV9.JZ0uQ47WhhtzJFyObbx_617gJzKtEB_nIL_YpUsHlkc
 
 ### GET all notes
 GET http://localhost:3001/api/blogs
 
 ### POST new note
 POST http://localhost:3001/api/blogs
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpMyIsImlkIjozLCJpYXQiOjE2OTEwNzE1ODV9.JZ0uQ47WhhtzJFyObbx_617gJzKtEB_nIL_YpUsHlkc
 Content-Type: application/json
 
 {
-  "content": "Webstorm is neat",
-  "important": false
+  "author": "mike",
+  "title": "hello",
+  "url": "test"
 }
 
 ### POST with bad data
@@ -28,3 +31,31 @@ Content-Type: application/json
 {
   "likes": 5
 }
+
+### POST a user
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "mluukkai3",
+  "name": "matti Luukkainen"
+}
+
+
+### PUT new username
+PUT http://localhost:3001/api/users/mluukkai
+Content-Type: application/json
+
+{
+  "username": "mluukkai2"
+}
+
+### get login token
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "mluukkai3",
+  "password": "secret"
+}
+

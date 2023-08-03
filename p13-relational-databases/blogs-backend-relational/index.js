@@ -2,12 +2,16 @@ const express = require('express')
 const app = express()
 require('express-async-errors')
 const blogRouter = require('./routes/blogs')
+const userRouter = require('./routes/users')
+const loginRouter = require('./routes/login')
 const {PORT} = require('./util/config')
 const {connectToDatabase} = require("./util/db");
 const middleware = require('./util/middleware')
 
 app.use(express.json())
 app.use('/api/blogs', blogRouter)
+app.use('/api/users', userRouter)
+app.use('/api/login', loginRouter)
 
 app.use(middleware.errorHandler)
 
