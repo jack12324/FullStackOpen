@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migration:down": "node util/rollback.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +19,7 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.1",
     "pg": "^8.11.2",
-    "sequelize": "^6.32.1"
+    "sequelize": "^6.32.1",
+    "umzug": "^3.3.1"
   }
 }

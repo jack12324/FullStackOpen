@@ -40,6 +40,9 @@ router.get('/', async (req, res) => {
 })
 router.post('/', extractToken, async (req, res) => {
     console.log(req.body)
+    if(req.body.year && req.body.year >2023 || req.body.year < 1991){
+        return res.status(400).json({error: "year must be within [1991, 2023]"})
+    }
     const blog = await Blog.create({...req.body, userId: req.token.id})
     return res.json(blog)
 })

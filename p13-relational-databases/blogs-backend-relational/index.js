@@ -18,7 +18,7 @@ app.use('/api/authors', authorRouter)
 app.use(middleware.errorHandler)
 
 const start = async () => {
-  await connectToDatabase
+  await connectToDatabase()
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
   })
